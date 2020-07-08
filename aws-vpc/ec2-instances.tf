@@ -33,7 +33,7 @@ resource "aws_instance" "nemo" {
 
 resource "aws_instance" "freddy" {
   vpc_security_group_ids = ["${aws_security_group.allow-ssh.id}"]
-  ami           = "${element(data.aws_ami.ubuntu[0].id,count.index)}"  # Ubuntu 18.04 (Bionic) - US West 1
+  ami           = "${data.aws_ami.ubuntu.id}"  # Ubuntu 18.04 (Bionic) - US West 1
 #  ami           = "ami-0dd655843c87b6930"  # Ubuntu 18.04 (Bionic) - US West 1
   instance_type = "t2.micro"
   key_name = "admin-key"
